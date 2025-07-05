@@ -4,46 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects</title>
-
-  <link rel="stylesheet" href="styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link
+    rel="preload"
+    as="style"
     href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet"
+    onload="this.rel='stylesheet'"
   />
-
-  <style>
-    /* slide-in effect */
-    .project-card {
-      opacity: 0;
-      transform: translateY(50px);
-      transition: transform 0.6s ease-out, opacity 0.6s ease-out;
-    }
-    .project-card.in-view {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    /* basic styling for filters */
-    #filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin: 1rem 0;
-    }
-    #filters button {
-      border: 1px solid var(--primary);
-      background: transparent;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    #filters button.active,
-    #filters button:hover {
-      background: var(--primary);
-      color: white;
-    }
-  </style>
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </noscript>
+  <link
+    rel="preload"
+    as="font"
+    href="https://fonts.gstatic.com/s/robotocondensed/v19/XXX.woff2"
+    type="font/woff2"
+    crossorigin
+  />
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
@@ -56,12 +38,10 @@
       </ul>
     </nav>
   </header>
-
   <main>
     <section id="projects" class="section-content">
       <h1>Here are some projects I’ve done and past experiences.</h1>
       <p>Feel free to filter based on skills/tech used!</p>
-
       <div id="filters">
         <button data-skill="all" class="active">show all</button>
         <button data-skill="api">api</button>
@@ -84,70 +64,58 @@
         <button data-skill="usertesting">usertesting</button>
         <button data-skill="web">web</button>
       </div>
-
       <div id="project-list">
         <article class="project-card" data-skill="communication,teamwork">
           <h2>Undergraduate TA – UBC (2023–Present)</h2>
           <p>Taught logic and state machines to 120+ students; designed slides for 500+; adapted to diverse learning styles and collaborated under pressure.</p>
         </article>
-
         <article class="project-card" data-skill="teamwork,technical,web,backend,data">
           <h2>Web Developer – UBC Science Undergraduate Society (2025–Present)</h2>
           <p>Designed a degree navigator for 16,000+ students using Python and D3.js.</p>
         </article>
-
         <article class="project-card" data-skill="teamwork,frontend,backend,api">
           <h2>TrailNotes (Fullstack Journal App)</h2>
           <p>Built journaling features with photo uploads, geolocation, and authentication; deployed with GitHub Pages.</p>
           <a href="https://devpost.com/software/trailnotes" target="_blank" class="project-link">View Project</a>
         </article>
-
         <article class="project-card" data-skill="teamwork,pm,communication,usertesting">
           <h2>InternDB (Project Manager)</h2>
           <p>Managed InternDB for 4000+ users; gathered 70+ survey responses; led sprints and prioritized features.</p>
           <a href="https://www.interndb.io/" target="_blank" class="project-link">View Project</a>
         </article>
-
         <article class="project-card" data-skill="teamwork,pm,communication,presentation,bio,cs">
           <h2>UBC Biomod (Computational Team)</h2>
           <p>Built DNA nanostructures; coded diffusion models; presented internationally in Japan, earning gold and 1st place.</p>
           <a href="https://ubcbiomod2024.netlify.app/" target="_blank" class="project-link">View Project</a>
         </article>
-
         <article class="project-card" data-skill="bio,cs,frontend,backend,api">
           <h2>Colony Counter (Python, OpenCV, Django)</h2>
           <p>Automated bacterial colony counting with computer vision; built a usable frontend.</p>
           <a href="https://devpost.com/software/colony-counter" target="_blank" class="project-link">View Project</a>
         </article>
-
         <article class="project-card" data-skill="backend,data,web">
           <h2>UBC Course Query (TypeScript)</h2>
           <p>Built a course search engine using TDD and async REST APIs; parsed data from HTML/JSON.</p>
         </article>
-
         <article class="project-card" data-skill="backend,database,web">
           <h2>Hot Pot Database (JavaScript, HTML, CSS)</h2>
           <p>Built 20+ Express + OracleDB endpoints with CRUD, joins, division, and robust error handling.</p>
           <a href="#" class="project-link">View Project</a>
         </article>
-
         <article class="project-card" data-skill="communication,teamwork,design,marketing">
           <h2>Marketing Coordinator – UBC World Vision</h2>
           <p>Created branding and ran social media for a nonprofit with 1.2k+ followers.</p>
           <a href="#" class="project-link">View Project</a>
         </article>
-
         <article class="project-card" data-skill="communication,teamwork,design">
           <h2>Academic Officer – UBC CSSS</h2>
           <p>Assisted alumni with curriculum proposals for 2700+ CS students.</p>
           <a href="#" class="project-link">View Project</a>
         </article>
-
         <article class="project-card" data-skill="teamwork,communication,planning,management">
           <h2>Hackathon Organizer – Project Tech Careers (2021–2024)</h2>
           <p>Organized 3 hackathons for 150+ high school students across North America.</p>
         </article>
-
         <article class="project-card" data-skill="projectmanagement,teamwork,communication,presentation">
           <h2>Student Researcher – UBC BioProducts Institute (2023–2024)</h2>
           <p>Led K. medelinensis food preservation project and presented results to 450+ attendees at MURC.</p>
@@ -155,7 +123,6 @@
       </div>
     </section>
   </main>
-
   <script src="script.js"></script>
 </body>
 </html>

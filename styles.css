@@ -1,12 +1,14 @@
 :root {
-    --bg-start: #f5f7ed;
-    --bg-end: #bce2f0;
-    --accent: #ffcc5f;
+    --bg-start: #EDF7EF;
+    --bg-end: #B2CBCF;
+    --accent: #ffd427;
     --primary: #1257D1;
     --link: #1257D1;
     --max-w: 1200px;
     --cursorX: 50%;
     --cursorY: 50%;
+    --x-ratio: 0.5;
+    --y-ratio: 0.5;
 }
 
 body {
@@ -19,7 +21,7 @@ body {
     color: var(--primary);
     background-color: var(--bg-end);
     background-image: radial-gradient(
-        circle 800px at var(--cursorX) var(--cursorY),
+        circle 1000px at var(--cursorX) var(--cursorY),
         var(--bg-start) 0%,
         rgba(237, 247, 239, 0.6) 50%,
         transparent 100%
@@ -48,9 +50,19 @@ a {
 header {
     position: sticky;
     top: 0;
-    background: transparent;
-    padding: 1rem;
     z-index: 100;
+    padding: 1rem;
+    background: transparent;
+    transition: background 0.3s ease;
+}
+
+body.scrolled header {
+    background: linear-gradient(
+        to bottom,
+        var(--bg-end) 5%,
+        var(--bg-end) 30%,
+        rgba(255,255,255,0) 100%
+    );
 }
 
 nav ul {
@@ -67,6 +79,22 @@ nav a {
 nav a.active,
 nav a:hover {
     color: var(--accent);
+}
+
+nav ul li:nth-child(1) a:hover {
+    color: #FFA500;
+}
+
+nav ul li:nth-child(2) a:hover {
+    color: #00CC44;
+}
+
+nav ul li:nth-child(3) a:hover {
+    color: #FF6699;
+}
+
+nav ul li:nth-child(4) a:hover {
+    color: #bcad0c;
 }
 
 main {
@@ -127,9 +155,10 @@ main {
     padding-right: 3rem;
 }
 
-.project-card {
-    background: rgba(255,255,255,0.85);
-    border: 2px solid var(--primary);
+.project-card,
+#project-list .project-card {
+    background: rgba(255,255,255,0.55);
+    border: 1px solid var(--primary);
     border-radius: 8px;
     padding: 1rem;
     width: 80%;
@@ -137,6 +166,16 @@ main {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+}
+
+.project-card.in-view,
+#project-list .project-card.in-view,
+.project-item.in-view {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 #photo-container {
@@ -160,20 +199,75 @@ main {
     flex-wrap: wrap;
     gap: 0.5rem;
     justify-content: center;
+    margin: 1rem 0;
 }
 
 #filters button {
     border: 1px solid var(--primary);
     background: transparent;
+    color: var(--primary);
     padding: 0.5rem 1rem;
     border-radius: 4px;
     cursor: pointer;
+    transition: background 0.3s;
 }
 
 #filters button.active,
 #filters button:hover {
-    background: var(--primary);
-    color: white;
+    background: rgba(18, 87, 209, 0.2);
+}
+
+#filters button.active {
+    background-color: rgba(18, 87, 209, 0.2);
+}
+
+#filters button[data-skill="api"].active {
+    background-color: rgba(255, 205, 0, 0.2);
+}
+#filters button[data-skill="backend"].active {
+    background-color: rgba(0, 200, 0, 0.4);
+}
+#filters button[data-skill="bio"].active {
+    background-color: rgba(200, 0, 200, 0.4);
+}
+#filters button[data-skill="communication"].active {
+    background-color: rgba(255, 100, 100, 0.4);
+}
+#filters button[data-skill="data"].active {
+    background-color: rgba(255, 205, 0, 0.2);
+}
+#filters button[data-skill="database"].active {
+    background-color: rgba(0, 200, 0, 0.4);
+}
+#filters button[data-skill="management"].active {
+    background-color: rgba(200, 0, 200, 0.4);
+}
+#filters button[data-skill="marketing"].active {
+    background-color: rgba(255, 100, 100, 0.4);
+}
+#filters button[data-skill="planning"].active {
+    background-color: rgba(255, 205, 0, 0.2);
+}
+#filters button[data-skill="pm"].active {
+    background-color: rgba(0, 200, 0, 0.4);
+}
+#filters button[data-skill="presentation"].active {
+    background-color: rgba(200, 0, 200, 0.4);
+}
+#filters button[data-skill="projectmanagement"].active {
+    background-color: rgba(255, 100, 100, 0.4);
+}
+#filters button[data-skill="web"].active {
+    background-color: rgba(255, 205, 0, 0.2);
+}
+#filters button[data-skill="usertesting"].active {
+    background-color: rgba(0, 200, 0, 0.4);
+}
+#filters button[data-skill="technical"].active {
+    background-color: rgba(200, 0, 200, 0.4);
+}
+#filters button[data-skill="teamwork"].active {
+    background-color: rgba(255, 100, 100, 0.4);
 }
 
 #project-list {
@@ -209,12 +303,15 @@ main {
     padding: 2rem 0;
     text-align: left;
 }
+
 .section-content.home-section > p:first-of-type {
-  margin-bottom: 5rem;
+    margin-bottom: 5rem;
 }
 
 .section-content.home-section .center-link {
-  margin-top: 5rem;   
+    margin-top: 5rem;
+    align-self: center;
+    text-align: center;
 }
 
 .section-content h1,
@@ -225,41 +322,48 @@ main {
     line-height: 1.5;
 }
 
-.section-content.home-section .center-link {
-    align-self: center;
-    text-align: center;
+.section-content h1 {
+    font-weight: 400;
 }
 
 .home-page .section-content.home-section {
     align-self: center;
     width: 100%;
     max-width: 800px;
-    padding: 2rem 1rem;
+    padding: 8rem 1rem 0 1rem;
     align-items: flex-start;
 }
 
 .project-item {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out;
 }
 
-/* when in view: slide up & fade in */
-.project-item.in-view {
-  opacity: 1;
-  transform: translateY(0);
+.loaded-photo {
+    position: fixed;
+    width: 120px;
+    height: auto;
+    pointer-events: none;
+    transform-origin: center center;
+    animation: spawnBounce 0.6s ease-out both;
 }
 
-/* ——————————————————————————————————————————
-   Slide-in for Projects page
-   —————————————————————————————————————————— */
-#project-list .project-card {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+@keyframes spawnBounce {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(var(--angle)) scale(0);
+    }
+    60% {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(var(--angle)) scale(1.15);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(var(--angle)) scale(1);
+    }
 }
 
-#project-list .project-card.in-view {
-  opacity: 1;
-  transform: translateY(0);
+#projects.section-content {
+    padding: 6rem;
 }

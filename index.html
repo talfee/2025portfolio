@@ -4,71 +4,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Home</title>
-    <link rel="stylesheet" href="styles.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
+    <link
+        rel="preload"
+        as="style"
+        href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+        onload="this.rel='stylesheet'"
+    />
+    <noscript>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"
+        />
+    </noscript>
+    <link
+        rel="preload"
+        as="font"
+        href="https://fonts.gstatic.com/s/robotocondensed/v19/XXX.woff2"
+        type="font/woff2"
+        crossorigin
+    />
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="index.html#home"    class="nav-link">Home</a></li>
-                <li><a href="about.html#about"   class="nav-link">About Me</a></li>
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="about.html#about" class="nav-link">About Me</a></li>
                 <li><a href="projects.html#projects" class="nav-link">Projects</a></li>
-                <li><a href="contact.html#contact"   class="nav-link">Contact</a></li>
+                <li><a href="contact.html#contact" class="nav-link">Contact</a></li>
             </ul>
         </nav>
     </header>
-
     <main class="home-page">
         <section id="home" class="section-content home-section">
             <h1>Hello!<br>I'm Talia.</h1>
-            <p>Scroll down to see some of my projects; to see more, check out the Projects tab!</p>
-
-            <div class="project-preview">
-                <svg class="connectors" xmlns="http://www.w3.org/2000/svg"></svg>
-
-                <div class="project-item right" id="item-1">
-                    <article class="project-card">
-                        <h2>Project One</h2>
-                        <ul>
-                            <li>Resume point B</li>
-                            <li>Feature Y</li>
-                            <li>Whatever</li>
-                        </ul>
-                    </article>
-                </div>
-
-                <div class="project-item left" id="item-1">
-                    <article class="project-card">
-                        <h2>Project OTwone</h2>
-                        <ul>
-                            <li>Resume point B</li>
-                            <li>Feature Y</li>
-                            <li>Whatever</li>
-                        </ul>
-                    </article>
-                </div>
-
-                <div class="project-item right" id="item-3">
-                    <article class="project-card">
-                        <h2>Project Three</h2>
-                        <ul>
-                            <li>Resume point C</li>
-                            <li>Feature Z</li>
-                            <li>Whatever</li>
-                        </ul>
-                    </article>
-                </div>
-            </div>
-
-            <p class="center-link">
-                <a href="projects.html#projects">View more of my projects in more detail here!</a>
-            </p>
+            <p>I am passionate about things</p>
         </section>
     </main>
-
     <script src="script.js"></script>
 </body>
 </html>
