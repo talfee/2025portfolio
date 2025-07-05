@@ -1,5 +1,5 @@
 :root {
-    --bg-start: #EDF7EF;
+    --bg-start: #f5f7ed;
     --bg-end: #bce2f0;
     --accent: #ffcc5f;
     --primary: #1257D1;
@@ -86,6 +86,7 @@ main {
     flex-direction: column;
     gap: 9rem;
     width: 100%;
+    position: relative;
 }
 
 .home-page .project-preview .connectors {
@@ -213,7 +214,7 @@ main {
 }
 
 .section-content.home-section .center-link {
-  margin-top: 5rem;
+  margin-top: 5rem;   
 }
 
 .section-content h1,
@@ -235,4 +236,30 @@ main {
     max-width: 800px;
     padding: 2rem 1rem;
     align-items: flex-start;
+}
+
+.project-item {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+}
+
+/* when in view: slide up & fade in */
+.project-item.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ——————————————————————————————————————————
+   Slide-in for Projects page
+   —————————————————————————————————————————— */
+#project-list .project-card {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+}
+
+#project-list .project-card.in-view {
+  opacity: 1;
+  transform: translateY(0);
 }
