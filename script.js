@@ -13,76 +13,6 @@
   }
 })();
 
-const PROJECTS = [
-  {
-    title: 'Undergraduate TA – UBC (2023–Present)',
-    desc: 'Taught logic and state machines to 120+ students; designed slides for 500+; adapted to diverse learning styles and collaborated under pressure.',
-    skills: ['communication', 'teamwork']
-  },
-  {
-    title: 'Web Developer – UBC Science Undergraduate Society (2025–Present)',
-    desc: 'Designed a degree navigator for 16,000+ students using Python and D3.js.',
-    skills: ['teamwork', 'technical', 'web', 'backend', 'data']
-  },
-  {
-    title: 'TrailNotes (Fullstack Journal App)',
-    desc: 'Built journaling features with photo uploads, geolocation, and authentication; deployed with GitHub Pages.',
-    link: 'https://devpost.com/software/trailnotes',
-    skills: ['teamwork', 'frontend', 'backend', 'api']
-  },
-  {
-    title: 'InternDB (Project Manager)',
-    desc: 'Managed InternDB for 4000+ users; gathered 70+ survey responses; led sprints and prioritized features.',
-    link: 'https://www.interndb.io/',
-    skills: ['teamwork', 'pm', 'communication', 'usertesting']
-  },
-  {
-    title: 'UBC Biomod (Computational Team)',
-    desc: 'Built DNA nanostructures; coded diffusion models; presented internationally in Japan, earning gold and 1st place.',
-    link: 'https://ubcbiomod2024.netlify.app/',
-    skills: ['teamwork', 'pm', 'communication', 'presentation', 'bio', 'cs']
-  },
-  {
-    title: 'Colony Counter (Python, OpenCV, Django)',
-    desc: 'Automated bacterial colony counting with computer vision; built a usable frontend.',
-    link: 'https://devpost.com/software/colony-counter',
-    skills: ['bio', 'cs', 'frontend', 'backend', 'api']
-  },
-  {
-    title: 'UBC Course Query (TypeScript)',
-    desc: 'Built a course search engine using TDD and async REST APIs; parsed data from HTML/JSON.',
-    skills: ['backend', 'data', 'web']
-  },
-  {
-    title: 'Hot Pot Database (JavaScript, HTML, CSS)',
-    desc: 'Built 20+ Express + OracleDB endpoints with CRUD, joins, division, and robust error handling.',
-    link: '#',
-    skills: ['backend', 'database', 'web']
-  },
-  {
-    title: 'Marketing Coordinator – UBC World Vision',
-    desc: 'Created branding and ran social media for a nonprofit with 1.2k+ followers.',
-    link: '#',
-    skills: ['communication', 'teamwork', 'design', 'marketing']
-  },
-  {
-    title: 'Academic Officer – UBC CSSS',
-    desc: 'Assisted alumni with curriculum proposals for 2700+ CS students.',
-    link: '#',
-    skills: ['communication', 'teamwork', 'design']
-  },
-  {
-    title: 'Hackathon Organizer – Project Tech Careers (2021–2024)',
-    desc: 'Organized 3 hackathons for 150+ high school students across North America.',
-    skills: ['teamwork', 'communication', 'planning', 'management']
-  },
-  {
-    title: 'Student Researcher – UBC BioProducts Institute (2023–2024)',
-    desc: 'Led K. medelinensis food preservation project and presented results to 450+ attendees at MURC.',
-    skills: ['projectmanagement', 'teamwork', 'communication', 'presentation']
-  }
-];
-
 function createProjectCard(p) {
   const article = document.createElement('article');
   article.className = 'project-card';
@@ -181,36 +111,53 @@ function renderFilters() {
   const aboutSection = document.getElementById('about');
   if (!aboutSection) return;
   const photos = [
-    'assets/IMG_0120.JPG',
-    'assets/IMG_0664.jpeg',
-    'assets/IMG_1043.jpeg',
-    'assets/IMG_2274.JPG',
-    'assets/IMG_4396.jpeg',
-    'assets/IMG_4419.jpeg',
-    'assets/IMG_4443.jpeg',
-    'assets/IMG_4444.jpeg',
-    'assets/IMG_7038.JPG',
-    'assets/IMG_7201.jpeg',
-    'assets/IMG_8864.jpeg',
-    'assets/IMG_9727.jpeg'
+    'assets/IMG_0120.webp',
+    'assets/IMG_0664.webp',
+    'assets/IMG_1043.webp',
+    'assets/IMG_2274.webp',
+    'assets/IMG_4396.webp',
+    'assets/IMG_4419.webp',
+    'assets/IMG_4443.webp',
+    'assets/IMG_4444.webp',
+    'assets/IMG_7038.webp',
+    'assets/IMG_7201.webp',
+    'assets/IMG_8864.webp',
+    // 'assets/IMG_9727.webp'
   ];
+
+    const preloadedImages = [];
+    photos.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+      preloadedImages.push(img);
+  });
+
   let index = 0, positive = true;
+  
   document.body.addEventListener('click', e => {
-    if (e.target.closest('nav')) return;
-    const src = photos[index];
-    index = (index + 1) % photos.length;
-    const base = 5 + Math.random() * 15;
-    const angle = (positive ? 1 : -1) * base;
-    positive = !positive;
-    const img = document.createElement('img');
-    img.src = src;
-    img.alt = 'About me photo';
-    img.className = 'loaded-photo';
-    img.style.setProperty('--angle', `${angle}deg`);
-    img.style.left = `${e.clientX}px`;
-    img.style.top = `${e.clientY}px`;
+  if (e.target.closest('nav')) return;
+  const src = photos[index];
+  index = (index + 1) % photos.length;
+  const base = 5 + Math.random() * 15;
+  const angle = (positive ? 1 : -1) * base;
+  positive = !positive;
+
+  const img = document.createElement('img');
+  img.src = src;
+  img.alt = 'About me photo';
+  img.className = 'loaded-photo';
+  img.style.setProperty('--angle', `${angle}deg`);
+  img.style.left = `${e.clientX}px`;
+  img.style.top = `${e.clientY}px`;
+
+  img.decode().then(() => {
+    document.body.appendChild(img);
+    requestAnimationFrame(() => img.classList.add('show')); 
+  }).catch(() => {
     document.body.appendChild(img);
   });
+});
+
 })();
 
 (function() {
@@ -256,7 +203,7 @@ function setupFilters() {
       });
     });
   });
-}
+  }
 
 document.addEventListener('DOMContentLoaded', () => {
   renderProjects();
