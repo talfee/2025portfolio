@@ -350,3 +350,49 @@ main {
 #projects.section-content {
     padding: 6rem;
 }
+
+/* ===== MOBILE FIXES ===== */
+
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .project-card,
+  #project-list .project-card {
+    width: 92%;
+    max-width: none;
+    padding: 1rem 1rem;
+    font-size: 0.95rem;
+    word-wrap: break-word;
+  }
+
+  .home-page .project-preview .project-item.left {
+    padding-left: 0.5rem;
+  }
+
+  .home-page .project-preview .project-item.right {
+    padding-right: 0.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  main {
+    padding: 1rem 0.5rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .project-card {
+    font-size: 0.85rem;
+  }
+}
+
+/* Ensures text wraps properly in project cards */
+.project-card p,
+.project-card h2 {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
