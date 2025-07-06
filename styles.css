@@ -381,6 +381,12 @@ main {
   main {
     padding: 2rem;
   }
+  body {
+    background-color: var(--bg-start); 
+    background-image: linear-gradient(to top, var(--bg-start), var(--bg-end));
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }
 
 @media (max-width: 350px) {
