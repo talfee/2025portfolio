@@ -1,9 +1,16 @@
 :root {
     --bg-start: #EDF7EF;
     --bg-end: #B2CBCF;
-    --accent: #ffd427;
+    --orange: #ffa500;
+    --green: #00cc44;
+    --pink: #ff6699;
+    --accent: var(--orange);
     --primary: #1257D1;
     --link: #1257D1;
+    --orange-bg: rgba(255,205,0,0.2);
+    --green-bg: rgba(0,200,0,0.4);
+    --pink-bg: rgba(255,100,100,0.4);
+    --purple-bg: rgba(200,0,200,0.4);
     --max-w: 1200px;
     --cursorX: 50%;
     --cursorY: 50%;
@@ -82,15 +89,15 @@ nav a:hover {
 }
 
 nav ul li:nth-child(1) a:hover {
-    color: #FFA500;
+    color: var(--orange);
 }
 
 nav ul li:nth-child(2) a:hover {
-    color: #00CC44;
+    color: var(--green);
 }
 
 nav ul li:nth-child(3) a:hover {
-    color: #FF6699;
+    color: var(--pink);
 }
 
 nav ul li:nth-child(4) a:hover {
@@ -221,53 +228,29 @@ main {
     background-color: rgba(18, 87, 209, 0.2);
 }
 
-#filters button[data-skill="api"].active {
-    background-color: rgba(255, 205, 0, 0.2);
-}
-#filters button[data-skill="backend"].active {
-    background-color: rgba(0, 200, 0, 0.4);
-}
-#filters button[data-skill="bio"].active {
-    background-color: rgba(200, 0, 200, 0.4);
-}
-#filters button[data-skill="communication"].active {
-    background-color: rgba(255, 100, 100, 0.4);
-}
-#filters button[data-skill="data"].active {
-    background-color: rgba(255, 205, 0, 0.2);
-}
-#filters button[data-skill="database"].active {
-    background-color: rgba(0, 200, 0, 0.4);
-}
-#filters button[data-skill="management"].active {
-    background-color: rgba(200, 0, 200, 0.4);
-}
-#filters button[data-skill="marketing"].active {
-    background-color: rgba(255, 100, 100, 0.4);
-}
-#filters button[data-skill="planning"].active {
-    background-color: rgba(255, 205, 0, 0.2);
-}
-#filters button[data-skill="pm"].active {
-    background-color: rgba(0, 200, 0, 0.4);
-}
-#filters button[data-skill="presentation"].active {
-    background-color: rgba(200, 0, 200, 0.4);
-}
-#filters button[data-skill="projectmanagement"].active {
-    background-color: rgba(255, 100, 100, 0.4);
-}
+#filters button[data-skill="api"].active,
+#filters button[data-skill="data"].active,
+#filters button[data-skill="planning"].active,
 #filters button[data-skill="web"].active {
-    background-color: rgba(255, 205, 0, 0.2);
+    background-color: var(--orange-bg);
 }
+#filters button[data-skill="backend"].active,
+#filters button[data-skill="database"].active,
+#filters button[data-skill="pm"].active,
 #filters button[data-skill="usertesting"].active {
-    background-color: rgba(0, 200, 0, 0.4);
+    background-color: var(--green-bg);
 }
+#filters button[data-skill="bio"].active,
+#filters button[data-skill="management"].active,
+#filters button[data-skill="presentation"].active,
 #filters button[data-skill="technical"].active {
-    background-color: rgba(200, 0, 200, 0.4);
+    background-color: var(--purple-bg);
 }
+#filters button[data-skill="communication"].active,
+#filters button[data-skill="marketing"].active,
+#filters button[data-skill="projectmanagement"].active,
 #filters button[data-skill="teamwork"].active {
-    background-color: rgba(255, 100, 100, 0.4);
+    background-color: var(--pink-bg);
 }
 
 #project-list {
